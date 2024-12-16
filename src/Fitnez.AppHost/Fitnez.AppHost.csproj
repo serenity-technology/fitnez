@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Fitnez.App\Fitnez.App\Fitnez.App.csproj" />
     <ProjectReference Include="..\Fitnez.Web\Fitnez.Web.csproj" />
   </ItemGroup>
 
