@@ -1,7 +1,7 @@
 var builder = DistributedApplication.CreateBuilder(args);
 
-builder.AddProject<Projects.Fitnez_Web>("fitnez-web");
+builder.AddProject<Projects.Fitnez_Web>("web");
 
-builder.AddProject<Projects.Fitnez_App>("fitnez-app");
+builder.AddProject<Projects.Fitnez_App>("app");
 
 builder.Build().Run();

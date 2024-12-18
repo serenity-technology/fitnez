@@ -12,6 +12,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitnez.App", "Fitnez.App\Fi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitnez.App.Client", "Fitnez.App\Fitnez.App.Client\Fitnez.App.Client.csproj", "{DDEE13EA-7950-4216-A0EE-07FBB71C6657}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fitnez.Share", "Fitnez.Share\Fitnez.Share.csproj", "{823B8F84-F909-40FE-B415-BF9E5ADBB02C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{155CF144-AD5D-4A92-9BAD-31100B064BAF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +45,10 @@ Global
 		{DDEE13EA-7950-4216-A0EE-07FBB71C6657}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDEE13EA-7950-4216-A0EE-07FBB71C6657}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDEE13EA-7950-4216-A0EE-07FBB71C6657}.Release|Any CPU.Build.0 = Release|Any CPU
+		{823B8F84-F909-40FE-B415-BF9E5ADBB02C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823B8F84-F909-40FE-B415-BF9E5ADBB02C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823B8F84-F909-40FE-B415-BF9E5ADBB02C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823B8F84-F909-40FE-B415-BF9E5ADBB02C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

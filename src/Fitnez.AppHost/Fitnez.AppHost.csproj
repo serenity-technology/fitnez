@@ -9,6 +9,7 @@
     <Nullable>enable</Nullable>
     <IsAspireHost>true</IsAspireHost>
     <UserSecretsId>f3dbcd11-fa22-4f35-bd51-e3e68b836529</UserSecretsId>
+    <RootNamespace>Fitnez</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

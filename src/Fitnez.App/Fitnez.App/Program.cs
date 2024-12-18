@@ -1,4 +1,4 @@
-using Fitnez.App.Components;
+using Fitnez.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,6 +34,6 @@ app.MapStaticAssets();
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode()
     .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(Fitnez.App.Client._Imports).Assembly);
+    .AddAdditionalAssemblies(typeof(Fitnez.Client._Imports).Assembly);
 
 app.Run();

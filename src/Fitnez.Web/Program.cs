@@ -1,4 +1,4 @@
-using Fitnez.Web.Components;
+using Fitnez.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
