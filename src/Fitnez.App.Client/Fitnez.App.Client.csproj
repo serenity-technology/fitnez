@@ -17,4 +17,8 @@
         <Folder Include="wwwroot\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Fitnez.App.Share\Fitnez.App.Share.csproj" />
+    </ItemGroup>
+
 </Project>
