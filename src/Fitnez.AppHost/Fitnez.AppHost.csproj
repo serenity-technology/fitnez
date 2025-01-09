@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Fitnez.App\Fitnez.App.csproj" />
     <ProjectReference Include="..\Fitnez.Identity\Fitnez.Identity.csproj" />
     <ProjectReference Include="..\Fitnez.Web\Fitnez.Web.csproj" />
+    <ProjectReference Include="..\Share.UI.Test\Share.UI.Test.csproj" />
   </ItemGroup>
 
 </Project>
