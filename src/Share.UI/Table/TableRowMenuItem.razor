@@ -1,0 +1,10 @@
+﻿@namespace Share
+
+@inherits Component
+
+<li class="group block p-2 rounded-md hover:bg-gray-800 cursor-pointer" @onclick="OnItemClick">
+    <div class="group-hover:text-orange-400 flex place-items-center gap-1">
+        <div>@ChildContent</div>
+        <span class="inline-block align-middle">@Label</span>
+    </div>
+</li>

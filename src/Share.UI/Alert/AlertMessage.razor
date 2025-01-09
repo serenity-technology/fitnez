@@ -1,0 +1,21 @@
+﻿@namespace Share
+
+@inherits Component
+
+<div class="@Style()">
+    <div class="flex items-center gap-8">
+        <p>@Message</p>
+        <button class="@ButtonStyle()" @onclick="@OnClose">
+            <CloseIcon Class="h-5 w-5" />
+        </button>
+    </div>
+    @if (Errors != null)
+    {
+        <ul class="list-disc pl-5">
+            @foreach (var error in Errors)
+            {
+                <li>@error.Message</li>
+            }
+        </ul>
+    }
+</div>

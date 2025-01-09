@@ -1,0 +1,18 @@
+﻿@namespace Share
+
+@inherits Component
+
+<CascadingValue Value="this" Name="tableRowMenu">
+    <button class="@Style()" @onclick="ToggleShow" @ref=_referenceElement>
+        <TableRowMenuIcon Class="size-6" />
+    </button>
+
+    @if (_show)
+    {
+        <div class="absolute z-10 border border-gray-600 rounded-lg w-fit bg-gray-700" @ref=_floatingElement>
+            <ul class="p-2 text-sm text-gray-300">
+                @ChildContent
+            </ul>
+        </div>
+    }
+</CascadingValue>

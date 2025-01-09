@@ -1,0 +1,16 @@
+﻿@namespace Share
+
+@inherits Input
+
+<div class="flex flex-col content-center">
+    <div class="flex items-center">
+        <input disabled="@Disabled" checked="@Value" @onclick="ToggleChecked" id="@Id" type="checkbox" class="size-3.5 rounded bg-transparent 
+            checked:bg-orange-400 checked:hover:bg-orange-400 checked:focus:bg-orange-400 checked:disabled:bg-gray-500
+            border-gray-600 focus:border-transparent focus:outline-orange-400 focus:outline-offset-1 
+            focus:ring-transparent focus:ring-offset-transparent">
+        <label for="@Id" class="ms-2 text-sm font-medium text-gray-400">@Label</label>
+    </div>
+    <div class="flex items-center">
+        <span class="h-3.5 text-red-700 text-xs">@ErrorMessage()</span>
+    </div>
+</div>

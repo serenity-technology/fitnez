@@ -1,0 +1,13 @@
+﻿@namespace Share
+
+@inherits Component
+
+@typeparam TValue
+
+<div class="flex items-center" @onclick="@OnItemSelect">
+    <input id="@Id" type="radio" checked="@Checked" disabled="@Disabled" class="size-3.5 rounded-full bg-transparent
+            checked:bg-orange-400 checked:hover:bg-orange-400 checked:focus:bg-orange-400 checked:disabled:bg-gray-500
+            border-gray-600 focus:border-transparent focus:outline-orange-400 focus:outline-offset-1
+            focus:ring-transparent focus:ring-offset-transparent">
+    <label for="@Id" class="ms-2 text-sm font-medium text-gray-400">@Option.Description</label>
+</div>

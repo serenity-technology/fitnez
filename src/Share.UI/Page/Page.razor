@@ -1,0 +1,31 @@
+﻿@namespace Share
+
+@inherits Component
+
+<div class="h-full max-h-full flex flex-col gap-1.5">
+    @if (RendererInfo.IsInteractive)
+    {   
+        <h1 class="px-1.5 text-orange-400 text-lg font-medium">@Label</h1>
+        <section class="flex-1 px-1.5 overflow-hidden">@Body</section>
+
+        @if (_isBusy)
+        {
+            <div class="relative h-screen flex flex-col items-center justify-center">
+                <div class="fixed inset-0 bg-gray-950 bg-opacity-65 transition-opacity" />
+                <Busy />
+            </div>        
+        }
+        
+        @if (ActionBar is not null)
+        {
+            <div class="p-1.5 rounded-t rounded-b-lg bg-gray-800 border-t border-gray-600 flex justify-center gap-4">@ActionBar</div>
+        }
+    }
+    else
+    {
+        <div class="relative h-screen flex flex-col items-center justify-center">
+            <div class="fixed inset-0 bg-gray-950 bg-opacity-65 transition-opacity" />
+            <Loading />
+        </div>        
+    }    
+</div>

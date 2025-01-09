@@ -1,0 +1,50 @@
+﻿@namespace Share
+
+@inherits Input
+
+@typeparam TValue
+
+@* <div class="relative z-0 w-full mt-1.5 group">
+    <select id="@Id" value="@StringValue" @onchange="OnValueChange" disabled="@Disabled" class="appearance-none block px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-600 focus:border-orange-400 focus:outline-none focus:ring-0 peer" placeholder=" ">
+        @foreach (IOption<TValue> option in Options)
+        {
+            var value = (option.Value != null) ? option.Value.ToString() : string.Empty;
+            <option class="bg-gray-900" value="@value">@option.Description</option>
+        }
+    </select>
+    <label for="@Id" class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">@LabelText()</label>
+    <p class="h-3.5 text-red-700 text-xs">@ErrorMessage()</p>
+</div> *@
+
+
+<div class="w-full mt-1.5 group" @ref=_reference @onkeypress="OnEnterKey" @onfocusout="OnFocusLeft">
+
+    <div class="flex">
+        <input type="text" id="@Id" value="@StringValue" @onchange="OnValueChange" disabled="@Disabled" class="block mt-1 px-0 pb-0.5 w-full text-sm bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-orange-400 peer" placeholder=" " />
+        <label for="@Id" class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">LabelText</label>
+
+        <div class="border-b-2 border-gray-600 peer-focus:border-orange-400 flex items-center justify-center" @onclick="ToggleShowDropdown">
+            <svg class="mt-2 p-0 size-5 text-gray-500 hover:text-orange-600" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15.25 10.75L12 14.25L8.75 10.75"></path>
+            </svg>
+        </div>
+    </div>
+
+    <p class="h-4 text-red-700 text-xs">@ErrorMessage()</p>
+</div>
+
+@if (_showDropdown)
+{
+    <div class="absolute w-max z-10 border border-gray-600 rounded-lg bg-gray-700" @ref=_floating>
+        <ul class="p-2 text-sm text-gray-300">
+            @foreach (IOption<TValue> option in Options.OrderBy(o => o.Description))
+            {
+                <li class="group block p-2 rounded-md hover:bg-gray-800 cursor-pointer" @onclick="() => SelectOption(option)">
+                    <div class="group-hover:text-orange-400 flex place-items-center gap-1">
+                        <span class="inline-block align-middle">@option.Description</span>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}

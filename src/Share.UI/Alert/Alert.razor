@@ -1,0 +1,13 @@
+﻿@namespace Share
+
+@inherits Component
+
+<CascadingValue Value=this Name="alert">
+    @ChildContent
+    <div class="absolute inset-x-0 bottom-20 flex flex-col items-center justify-center">
+        @foreach (var alert in _alerts)
+        {
+            <AlertMessage Id="@alert.Id" Type="@alert.Type" Message="@alert.Message" Errors="@alert.Errors" />
+        }
+    </div>
+</CascadingValue>
