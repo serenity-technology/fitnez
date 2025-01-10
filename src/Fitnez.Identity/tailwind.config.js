@@ -5,11 +5,9 @@ module.exports = {
             '../Share.UI/**/*.razor',
             '../Share.UI/**/*.razor.cs',
 
+            './**/*.cshtml',
             './**/*.razor',
-            './**/*.razor.cs',
-
-            '../Fitnez.App.Client/**/*.razor',
-            '../Fitnez.App.Client/**/*.razor.cs'
+            './**/*.razor.cs'
         ]
     },
     theme: {

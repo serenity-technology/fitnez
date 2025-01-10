@@ -1,1 +1,1 @@
-..\..\lib\tailwindcss-windows-x64 -i .\tailwind.input.css -o .\wwwroot\app.css --watch
+..\..\lib\tailwindcss-windows-x64 -i .\tailwind.input.css -o .\wwwroot\css\app.css --watch
