@@ -1,0 +1,14 @@
+﻿@page "/input/number"
+
+<Page Label="Input Number Component" Title="UI Examples - Input Number">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <Number Label="Number Enabled" @bind-Value="_number" />
+            <Number Label="Number Disabled" @bind-Value="_number" Disabled />
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    private int _number;
+}

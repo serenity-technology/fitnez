@@ -1,0 +1,14 @@
+﻿@page "/input/textarea"
+
+<Page Label="Input Text Area Component" Title="UI Examples - Input Text Area">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <TextArea Label="Text Area Enabled" @bind-Value="_textArea" />
+            <TextArea Label="Text Area Disabled" @bind-Value="_textArea" Disabled />            
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    string _textArea = "";
+}

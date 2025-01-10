@@ -139,7 +139,7 @@ public partial class Select<TValue> : Input
     {
         if (firstRender)
         {
-            _jsModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Fitnez.UI/Input/Select.razor.js");
+            _jsModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Share.UI/Input/Select.razor.js");
         }
 
         if (_showDropdown && _jsModule is not null)

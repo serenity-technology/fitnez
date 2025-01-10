@@ -1,0 +1,89 @@
+﻿@page "/table"
+
+<Page Title="UI Examples - Table" Label="Table Component">
+    <Body>
+       <Table TRowData="Row" Rows="@_items">
+            <Header>
+                <div class="grid grid-cols-[3fr_2.5rem_1fr_1fr_1fr_2rem_2rem] gap-x-2">
+                    <div class="">Description</div>
+                    <div class="">Yes</div>
+                    <div class="">Date</div>
+                    <div class="">Number</div>
+                    <div class="text-right">Amount</div>
+                    <div class=""></div>
+                    <div class=""></div>
+                </div>
+            </Header>
+
+            <Body Context="record">
+                <div class="grid grid-cols-[3fr_2.5rem_1fr_1fr_1fr_2rem_2rem] gap-x-2">
+                    <div>@record.Description</div>
+                    <div>@record.YesNo</div>
+                    <div>@record.Date.ToText()</div>
+                    <div>@record.Number</div>
+                    <div class="text-right">@record.Amount.ToText(2)</div>
+                    <TableRowButton>
+                        <RefreshIcon Class="size-5" />                        
+                    </TableRowButton>
+
+                    <TableRowMenu>
+                        <TableRowMenuItem Label="Add">
+                            <HomeIcon Class="size-5" />
+                        </TableRowMenuItem>
+
+                        <TableRowMenuItem Label="Refresh">
+                            <RefreshIcon Class="size-5" />
+                        </TableRowMenuItem>
+                    </TableRowMenu>
+                </div>
+            </Body>
+
+            <Footer>
+                <div class="grid grid-cols-[3fr_2.5rem_1fr_1fr_1fr_2rem_2rem] gap-x-2">
+                    <div class="">Description</div>
+                    <div class="">Yes</div>
+                    <div class="">Date</div>
+                    <div class="">Number</div>
+                    <div class="text-right">Amount</div>
+                    <div class="max-w-10"></div>
+                </div>
+            </Footer>
+        </Table>
+    </Body>
+</Page>
+
+@code {
+    private List<Row> _items = new List<Row>
+    {
+        new Row { Description = "Row 1", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 1, Amount = 123567.89m },
+        new Row { Description = "Row 2", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 2, Amount = 123.89m },
+        new Row { Description = "Row 3", YesNo = false, Date = new DateOnly(2023, 2, 9), Number = 3, Amount = 1m },
+        new Row { Description = "Row 4", YesNo = true, Date = new DateOnly(2023, 12, 9), Number = 4, Amount = -12367.89m },
+        new Row { Description = "Row 5", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 5, Amount = 0.89m },
+        new Row { Description = "Row 6", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 6, Amount = 1234567.89m },
+        new Row { Description = "Row 7", YesNo = false, Date = new DateOnly(2023, 2, 19), Number = 7, Amount = 12367.89m },
+        new Row { Description = "Row 8", YesNo = true, Date = new DateOnly(2023, 12, 9), Number = 8, Amount = 234567.89m },
+        new Row { Description = "Row 9", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 9, Amount = 14567.89m },
+        new Row { Description = "Row 10", YesNo = false, Date = new DateOnly(2023, 2, 9), Number = 10, Amount = 0m },
+        new Row { Description = "Row 11", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 11, Amount = 123.89m },
+        new Row { Description = "Row 12", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 12, Amount = 124567.8m },
+        new Row { Description = "Row 13", YesNo = false, Date = new DateOnly(2023, 2, 9), Number = 13, Amount = 1234567.09m },
+        new Row { Description = "Row 14", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 14, Amount = 127.89m },
+        new Row { Description = "Row 15", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 15, Amount = 12567.89m },
+        new Row { Description = "Row 16", YesNo = true, Date = new DateOnly(2023, 12, 9), Number = 16, Amount = 1567.89m },
+        new Row { Description = "Row 17", YesNo = true, Date = new DateOnly(2023, 2, 19), Number = 17, Amount = 14567.89m },
+        new Row { Description = "Row 18", YesNo = true, Date = new DateOnly(2023, 2, 9), Number = 18, Amount = 12567.89m },
+        new Row { Description = "Row 19", YesNo = true, Date = new DateOnly(2023, 2, 19), Number = 19, Amount = 1267.89m },
+        new Row { Description = "Row 20", YesNo = false, Date = new DateOnly(2023, 2, 9), Number = 20, Amount = 1237.89m },
+        new Row { Description = "Row 21", YesNo = false, Date = new DateOnly(2023, 2, 10), Number = 21, Amount = 137.89m }
+    };
+
+    private record Row
+    {
+        public string Description { get; init; } = default!;
+        public bool YesNo { get; init; }
+        public DateOnly Date { get; init; }
+        public int Number { get; init; }
+        public decimal Amount { get; init; }
+    }
+}

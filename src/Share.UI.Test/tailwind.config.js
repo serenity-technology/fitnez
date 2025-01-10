@@ -2,14 +2,14 @@ module.exports = {
     darkMode: 'selector',
     content: {
         files: [
-            '../Fitnez.UI/**/*.razor',
-            '../Fitnez.UI/**/*.razor.cs',
+            '../Share.UI/**/*.razor',
+            '../Share.UI/**/*.razor.cs',
 
             './**/*.razor',
             './**/*.razor.cs',
 
-            '../Fitnez.UI.Web.Client/**/*.razor',
-            '../Fitnez.UI.Web.Client/**/*.razor.cs'
+            '../Share.UI.Test.Client/**/*.razor',
+            '../Share.UI.Test.Client/**/*.razor.cs'
         ]
     },
     theme: {

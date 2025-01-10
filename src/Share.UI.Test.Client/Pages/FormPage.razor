@@ -1,0 +1,117 @@
+﻿@page "/input/form"
+
+<Page Label="Input Form Component" Title="UI Examples - Input Form">
+    <Body>
+        <Form Class="w-60 flex flex-col gap-2" @ref=_form>
+            <Text Id="Text" Label="Text" @bind-Value="_text" />
+            <Password Id="Password" Label="Password" @bind-Value="_password" />
+            <Date Id="Date" Label="Date" @bind-Value="_date" />
+            <Number Id="Number" Label="Number" @bind-Value="_number" />
+            <Amount Id="Amount" Label="Amount" @bind-Value="_amount" />
+            <Select Id="Select" TValue="int" Options="@_selectOptions" Label="Select" @bind-Value="_select" />
+            <Checkbox Id="Checkbox" Label="Checkbox" @bind-Value="_checkbox" />
+            <Radio Id="Radio" TValue="int" Options="@_radioOptions" Label="Radio" @bind-Value="_radio" />
+            <TextArea Id="TextArea" Label="Text Area" @bind-Value="_textArea" />
+        </Form>
+    </Body>
+
+    <ActionBar>
+        <PageAction Label="Show Errors" OnClick="@ShowErrors">
+            <RefreshIcon Class="size-8" />
+        </PageAction>
+
+        <PageAction Label="Clear Errors" OnClick="@ClearErrors">
+            <RefreshIcon Class="size-8" />
+        </PageAction>
+    </ActionBar>
+
+</Page>
+
+@code {
+    private Form _form = default!;
+    [CascadingParameter(Name = "alert")] private Alert _alert { get; set; } = default!;
+
+    private string _text = default!;
+    private string _textArea = default!;
+    private string _password = default!;
+    private int _number;
+    private decimal _amount;
+    private DateOnly? _date = default!;
+    private int _select;
+    private List<SelectOption> _selectOptions = [];
+    private bool _checkbox;
+    private int _radio;
+    private List<RadioOption> _radioOptions = [];
+
+    private void ShowErrors()
+    {
+        List<Error> errors = [];
+
+        errors.Add(new Error { Message = "Text Error 1", Context = "Text" });
+        errors.Add(new Error { Message = "Text Error 2", Context = "Text" });
+
+        errors.Add(new Error { Message = "Text Arear Error 1", Context = "TextArea" });
+        errors.Add(new Error { Message = "Text Arear Error 2", Context = "TextArea" });
+
+        errors.Add(new Error { Message = "Password Error 1", Context = "Password" });
+        errors.Add(new Error { Message = "Password Error 2", Context = "Password" });
+
+        errors.Add(new Error { Message = "Number Error 1", Context = "Number" });
+        errors.Add(new Error { Message = "Number Error 2", Context = "Number" });
+
+        errors.Add(new Error { Message = "Amount Error 1", Context = "Amount" });
+        errors.Add(new Error { Message = "Amount Error 2", Context = "Amount" });
+
+        errors.Add(new Error { Message = "Date Error 1", Context = "Date" });
+        errors.Add(new Error { Message = "Date Error 2", Context = "Date" });
+
+        errors.Add(new Error { Message = "Select Error 1", Context = "Select" });
+        errors.Add(new Error { Message = "Select Error 2", Context = "Select" });
+
+        errors.Add(new Error { Message = "Checkbox Error 1", Context = "Checkbox" });
+        errors.Add(new Error { Message = "Checkbox Error 2", Context = "Checkbox" });
+
+        errors.Add(new Error { Message = "Radio Error 1", Context = "Radio" });
+        errors.Add(new Error { Message = "Radio Error 2", Context = "Radio" });
+
+        errors.Add(new Error { Message = "Error 1", Context = "Global" });
+        errors.Add(new Error { Message = "Error 2", Context = "Global" });
+
+        _form.ShowErrors("There were errors with your submission", errors);
+    }
+
+    private void ClearErrors()
+    {
+        _form.ClearErrors();
+    }
+
+    protected override void OnInitialized()
+    {
+        _selectOptions.Add(new SelectOption { Value = 1, Description = "Select Option 1" });
+        _selectOptions.Add(new SelectOption { Value = 2, Description = "Select Option 2" });
+        _selectOptions.Add(new SelectOption { Value = 3, Description = "Select Option 3" });
+        _selectOptions.Add(new SelectOption { Value = 4, Description = "Select Option 4" });
+
+        _radioOptions.Add(new RadioOption { Value = 1, Description = "Radio Option 1" });
+        _radioOptions.Add(new RadioOption { Value = 2, Description = "Radio Option 2" });
+        _radioOptions.Add(new RadioOption { Value = 3, Description = "Radio Option 3" });
+        _radioOptions.Add(new RadioOption { Value = 4, Description = "Radio Option 4" });
+    }
+
+
+    public class SelectOption : IOption<int>
+    {
+        #region IOption
+        public int Value { get; set; }
+        public string Description { get; set; } = default!;
+        #endregion
+    }
+
+    public class RadioOption : IOption<int>
+    {
+        #region IOption
+        public int Value { get; set; }
+        public string Description { get; set; } = default!;
+        #endregion
+    }
+}

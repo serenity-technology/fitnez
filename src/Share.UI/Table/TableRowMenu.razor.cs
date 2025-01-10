@@ -44,7 +44,7 @@ public partial class TableRowMenu
     {
         if (firstRender)
         {
-            _jsModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Fitnez.UI/Table/TableRowMenu.razor.js");
+            _jsModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Share.UI/Table/TableRowMenu.razor.js");
         }
 
         if (_show && _jsModule is not null)

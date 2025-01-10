@@ -1,0 +1,14 @@
+﻿@page "/input/checkbox"
+
+<Page Label="Input Checkbox Component" Title="UI Examples - Input Checkbox">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <Checkbox Label="Checkbox Enabled" @bind-Value="_checkbox" />
+            <Checkbox Label="Checkbox Disabled" @bind-Value="_checkbox" Disabled />
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    private bool _checkbox;
+}

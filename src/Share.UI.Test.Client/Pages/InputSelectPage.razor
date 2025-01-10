@@ -1,0 +1,31 @@
+﻿@page "/input/select"
+
+<Page Label="Input Select Component" Title="UI Examples - Input Select">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <Select TValue="int" Options="@_options" Label="Select Enabled" @bind-Value="_select" />
+            <Select TValue="int" Options="@_options" Label="Select Disabled" @bind-Value="_select" Disabled />
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    private int _select;
+    private List<Option> _options = [];
+
+    protected override void OnInitialized()
+    {
+        _options.Add(new Option { Value = 1, Description = "111" });
+        _options.Add(new Option { Value = 2, Description = "222" });
+        _options.Add(new Option { Value = 3, Description = "333" });
+        _options.Add(new Option { Value = 4, Description = "444" });
+    }
+
+    public class Option : IOption<int>
+    {
+        #region IOption
+        public int Value { get; set; }
+        public string Description { get; set; } = default!;
+        #endregion
+    }
+}

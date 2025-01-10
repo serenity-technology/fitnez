@@ -1,0 +1,14 @@
+﻿@page "/input/date"
+
+<Page Label="Input Date Component" Title="UI Examples - Input Date">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <Date Label="Date Enabled" @bind-Value="_date" />
+            <Date Label="Date Disabled" @bind-Value="_date" Disabled />
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    private DateOnly? _date = default!;
+}

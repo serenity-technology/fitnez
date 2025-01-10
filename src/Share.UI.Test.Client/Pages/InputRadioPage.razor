@@ -1,0 +1,32 @@
+﻿@page "/input/radio"
+
+<Page Label="Input Amount Component" Title="UI Examples - Input Amount">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <Radio TValue="int" Options="@_radioOptions" Label="Select Enabled" @bind-Value="_radio" />
+            <Radio TValue="int" Options="@_radioOptions" Label="Select Disabled" @bind-Value="_radio" Disabled />
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    private int _radio;
+    private List<RadioOption> _radioOptions = [];
+
+    protected override void OnInitialized()
+    {
+        _radioOptions.Add(new RadioOption { Value = 1, Description = "111" });
+        _radioOptions.Add(new RadioOption { Value = 2, Description = "222" });
+        _radioOptions.Add(new RadioOption { Value = 3, Description = "333" });
+        _radioOptions.Add(new RadioOption { Value = 4, Description = "444" });
+    }
+
+
+    public class RadioOption : IOption<int>
+    {
+        #region IOption
+        public int Value { get; set; }
+        public string Description { get; set; } = default!;
+        #endregion
+    }
+}

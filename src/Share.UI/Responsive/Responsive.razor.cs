@@ -33,7 +33,7 @@ public partial class Responsive : IAsyncDisposable
     {
         if (firstRender)
         {
-            _responsiveModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Fitnez.UI/Responsive/Responsive.razor.js");
+            _responsiveModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Share.UI/Responsive/Responsive.razor.js");
             if (_responsiveModule is not null)
             {
                 var dotnet = DotNetObjectReference.Create(this);

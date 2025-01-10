@@ -1,0 +1,14 @@
+﻿@page "/input/text"
+
+<Page Label="Input Text Component" Title="UI Examples - Input Text">
+    <Body>
+        <Form class="w-60 flex flex-col gap-1">
+            <Text Label="Text Enabled" @bind-Value="_text" />
+            <Text Label="Text Disabled" @bind-Value="_text" Disabled />
+        </Form>
+    </Body>
+</Page>
+
+@code {
+    string _text = "sample text";
+}

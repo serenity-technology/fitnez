@@ -1,0 +1,37 @@
+﻿@page "/dialog"
+
+<Page Title="UI Examples - Dialog" Label="Dialog Component">
+    <Body>
+        <Confirm TValue="string" AllowCancel OnConfirmYes="@OnYes" OnConfirmNo="@OnNo" OnConfirmCancel="@OnCancel" @ref=Confirm />
+        <Button Label="Confirm" OnClick="@Show" />
+    </Body>
+</Page>
+
+@code {
+    [CascadingParameter(Name = "alert")] private Alert _alert { get; set; } = default!;
+    public Confirm<string> Confirm { get; set; } = default!;
+    private string _result = default!;
+
+    private void Show()
+    {
+        Confirm.Show("test", "Delete this record");
+    }
+
+    private void OnYes(string value)
+    {
+        _result = $"Yes with value [{value}]";
+        _alert.ShowSuccess(_result);
+    }
+
+    private void OnNo(string value)
+    {
+        _result = $"No with value [{value}]";
+        _alert.ShowSuccess(_result);
+    }
+
+    private void OnCancel(string value)
+    {
+        _result = $"Cancel with value [{value}]";
+        _alert.ShowSuccess(_result);
+    }
+}

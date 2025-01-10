@@ -1,0 +1,48 @@
+﻿@page "/responsive"
+
+<Page Title="UI Examples - Responsive" Label="Responsive Component">
+    <Body>
+        <div class="flex flex-col gap-4">
+            <div>
+                @switch (_responsive.Breakpoint)
+                {
+                    case Breakpoint.Small:
+                        <div class="w-72 h-60 bg-green-300">
+                            Blazor - Small (smaller than 640px)
+                        </div>
+                        break;
+
+                    case Breakpoint.Medium:
+                        <div class="w-72 h-60 bg-blue-300">
+                            Blazor - Medium (641px to 1007px)
+                        </div>
+                        break;
+
+                    case Breakpoint.Large:
+                        <div class="w-72 h-60 bg-yellow-300">
+                            Blazor - Large (1008px and larger)
+                        </div>
+                        break;
+                }
+            </div>
+
+            <div class="w-72 h-60 bg-green-300 md:bg-blue-300 lg:bg-yellow-300">
+                <p>Tailwind</p>
+                <p>sm - green</p>
+                <p>md - blue</p>
+                <p>lg - yellow</p>
+            </div>
+        </div>
+    </Body>
+
+    <ActionBar>
+        <PageAction Label="Refresh">
+            <RefreshIcon Class="size-6" />
+        </PageAction>
+    </ActionBar>
+</Page>
+
+@code {
+    [CascadingParameter(Name = "responsive")]
+    private Responsive _responsive { get; set; } = default!;
+}

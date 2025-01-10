@@ -1,0 +1,34 @@
+﻿@page "/alert"
+
+<Page Title="UI Examples - Alert" Label="Alert Component">
+    <Body>
+        <div class="flex gap-4">
+            <Button Label="Success" OnClick="@Success" />
+            <Button Label="Error" OnClick="@Error" />
+            <Button Label="Long message" OnClick="@Long" />
+        </div>
+    </Body>
+</Page>
+
+@code {
+    [CascadingParameter(Name = "alert")] private Alert _alert { get; set; } = default!;
+    private int _count = 0;
+
+    private void Success()
+    {
+        _count++;
+        _alert.ShowSuccess($"Success {_count}");
+    }
+
+    private void Error()
+    {
+        _count++;
+        _alert.ShowError($"Error {_count}");
+    }
+
+    private void Long()
+    {
+        _count++;
+        _alert.ShowSuccess("This is a long message.");
+    }
+}

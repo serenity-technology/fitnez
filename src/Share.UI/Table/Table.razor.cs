@@ -31,7 +31,7 @@ public partial class Table<TRowData>
     {
         if (firstRender)
         {
-            _scrollbarModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Fitnez.UI/Table/Table.razor.js");
+            _scrollbarModule = await _jsRuntime.InvokeAsync<IJSObjectReference>("import", "./_content/Share.UI/Table/Table.razor.js");
             var with = await _scrollbarModule.InvokeAsync<int>("scrollbarWith", _bodyElement);
 
             ScrollbarWith = $"width: {with}px";
