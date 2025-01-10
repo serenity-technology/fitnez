@@ -1,5 +1,7 @@
 ﻿@page "/"
 
+@attribute [Authorize]
+
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
@@ -9,3 +11,5 @@ Welcome to your new app.
 <div class="bg-blue-300">
     testing
 </div>
+
+<LogInOrOut/>

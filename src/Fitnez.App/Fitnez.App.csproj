@@ -13,6 +13,7 @@
     <ProjectReference Include="..\Fitnez.ServiceDefaults\Fitnez.ServiceDefaults.csproj" />
     <ProjectReference Include="..\Share.API.Server\Share.API.Server.csproj" />
     <PackageReference Include="Aspire.Npgsql" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="9.0.0" />
   </ItemGroup>
 

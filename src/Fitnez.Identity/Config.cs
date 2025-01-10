@@ -47,5 +47,20 @@ public static class Config
                 AllowOfflineAccess = true,
                 AllowedScopes = { "openid", "profile", "scope2" }
             },
+
+            new Client
+                {
+                    ClientId = "fitnez",
+                    ClientSecrets = { new Secret("D48A84AD-0256-49C8-92EA-6E0FD42F385A".Sha256()) },
+
+                    AllowedGrantTypes = GrantTypes.Code,
+
+                    RedirectUris = { "https://localhost:7160/signin-oidc" },
+                    FrontChannelLogoutUri = "https://localhost:7160/signout-oidc",
+                    PostLogoutRedirectUris = { "https://localhost:7160/signout-callback-oidc" },
+
+                    AllowOfflineAccess = true,
+                    AllowedScopes = { "openid", "profile", "scope2" }
+                }
         };
 }

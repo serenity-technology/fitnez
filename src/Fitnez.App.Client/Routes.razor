@@ -1,6 +1,12 @@
-﻿<Router AppAssembly="typeof(Program).Assembly">
+﻿<Router @rendermode="new InteractiveAutoRenderMode(prerender: false)" AppAssembly="typeof(Program).Assembly">
     <Found Context="routeData">
-        <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)" />
-        <FocusOnNavigate RouteData="routeData" Selector="h1" />
+        @* <RouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">
+
+        </RouteView> *@
+        <AuthorizeRouteView RouteData="routeData" DefaultLayout="typeof(Layout.MainLayout)">
+            <NotAuthorized>
+                <RedirectToLogin />
+            </NotAuthorized>
+        </AuthorizeRouteView>
     </Found>
 </Router>
