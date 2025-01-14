@@ -895,6 +895,10 @@ select {
   height: 1.25rem;
 }
 
+.h-dvh {
+  height: 100dvh;
+}
+
 .h-full {
   height: 100%;
 }
@@ -903,16 +907,12 @@ select {
   height: 100vh;
 }
 
-.h-dvh {
-  height: 100dvh;
+.max-h-dvh {
+  max-height: 100dvh;
 }
 
 .max-h-full {
   max-height: 100%;
-}
-
-.max-h-dvh {
-  max-height: 100dvh;
 }
 
 .min-h-0 {
@@ -1167,11 +1167,6 @@ select {
 .border-red-700 {
   --tw-border-opacity: 1;
   border-color: rgb(185 28 28 / var(--tw-border-opacity, 1));
-}
-
-.bg-blue-300 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(147 197 253 / var(--tw-bg-opacity, 1));
 }
 
 .bg-gray-700 {

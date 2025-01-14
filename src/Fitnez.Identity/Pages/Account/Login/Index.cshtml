@@ -9,36 +9,42 @@
 
         @if (Model.View.EnableLocalLogin)
         {
-            <div class="p-5 max-w-64 bg-gray-900">
-                <form class="bg-gray-900 flex flex-col gap-2" asp-page="/Account/Login/Index">
-                    <input type="hidden" asp-for="Input.ReturnUrl" />
+            <div class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div class="rounded-lg border border-gray-600 flex flex-col gap-4">
+                    <h3 class="rounded-t-lg p-2 bg-gray-700 text-lg leading-6 font-medium text-gray-400">
+                        Please Login...
+                    </h3>
 
-                    <div class="relative z-0 w-full mt-1.5 group">
-                        <input asp-for="Input.Username" class="block px-0 w-full text-sm bg-gray-900 border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-orange-400 peer" placeholder=" " autofocus>
-                        <label asp-for="Input.Username" class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" />
-                    </div>
+                    <form asp-page="/Account/Login/Index" class="px-4 pb-2 flex flex-col gap-4">
+                        <input asp-for="Input.ReturnUrl" type="hidden" />
 
-                    <div class="relative z-0 w-full mt-1.5 group">
-                        <input type="password" class="block px-0 w-full text-sm bg-gray-900 border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-orange-400 peer" placeholder=" " asp-for="Input.Password" autocomplete="off">
-                        <label asp-for="Input.Password" class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6" />
-                    </div>
-                            
-                    @if (Model.View.AllowRememberLogin)
-                    {
-                        <div class="flex items-center">
-                            <input type="checkbox" asp-for="Input.RememberLogin" class="size-3.5 rounded bg-gray-900 checked:bg-orange-400 checked:hover:bg-orange-400 checked:focus:bg-orange-400 checked:disabled:bg-gray-500
-                                border-gray-600 focus:border-transparent focus:outline-orange-400 focus:outline-offset-1
-                                focus:ring-transparent focus:ring-offset-transparent">
-                            <label asp-for="Input.RememberLogin" class="ms-2 text-sm font-medium text-gray-400">Remember My Login""</label>
+                        <div class="relative z-0 w-full mt-1.5 group">
+                            <input asp-for="Input.Username" type="text" placeholder=" " autofocus class="autofill:bg-transparent block px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-orange-400 peer" />
+                            <label asp-for="Input.Username" class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Email</label>
                         </div>
-                    }
 
-                    <div class="flex items-center justify-between">
-                        <button class="px-5 py-2.5 m-2 rounded-lg text-sm font-medium text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-500" name="Input.Button" value="login">Login</button>
-                        <button class="px-5 py-2.5 m-2 rounded-lg text-sm font-medium text-white hover:text-orange-400 bg-transparent border border-orange-400 hover:border-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-500" name="Input.Button" value="cancel">Cancel</button>
-                    </div>
-                    
-                </form>
+                        <div class="relative z-0 w-full mt-1.5 group">
+                            <input asp-for="Input.Password" type="password" placeholder=" " autocomplete="off" class="block px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-600 appearance-none focus:outline-none focus:ring-0 focus:border-orange-400 peer" />
+                            <label asp-for="Input.Password" class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Password</label>
+                        </div>
+
+                        @if (Model.View.AllowRememberLogin)
+                        {
+                            <div class="flex items-center">
+                                <input asp-for="Input.RememberLogin" type="checkbox" class="size-3.5 rounded bg-transparent checked:bg-orange-400 checked:hover:bg-orange-400 checked:focus:bg-orange-400
+                                    checked:disabled:bg-gray-500 border-gray-600 focus:border-transparent focus:outline-orange-400 focus:outline-offset-1
+                                    focus:ring-transparent focus:ring-offset-transparent">
+                                <label asp-for="Input.RememberLogin" class="ms-2 text-sm font-medium text-gray-400">Remember My Login</label>
+                            </div>
+                        }
+
+                        <div class="p-2 px-4 rounded-b-lg bg-gray-800 flex items-center justify-between">
+                            <button name="Input.Button" value="login" class=" px-5 py-2.5 m-2 rounded-lg text-sm font-medium text-white bg-orange-400 hover:bg-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-500">Login</button>
+                            <button name="Input.Button" value="cancel" class="px-5 py-2.5 m-2 rounded-lg text-sm font-medium text-white hover:text-orange-400 bg-transparent border border-orange-400 hover:border-orange-500 focus:ring-4 focus:outline-none focus:ring-orange-500">Cancel</button>
+                        </div>
+
+                    </form>                    
+                </div>
             </div>
         }
                 

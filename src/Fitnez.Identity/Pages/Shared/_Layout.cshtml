@@ -2,28 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    @* <meta http-equiv="X-UA-Compatible" content="IE=edge"> *@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Fitnez</title>
     
     <link rel="icon" type="image/x-icon" href="~/favicon.ico" />
     <link rel="shortcut icon" type="image/x-icon" href="~/favicon.ico" />
     
-    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap4-glyphicons/css/bootstrap-glyphicons.min.css" /> *@
-    @* <link rel="stylesheet" href="~/css/site.css" /> *@
     <link rel="stylesheet" href="~/css/app.css" />
 </head>
-<body class="p-1.5 h-dvh max-h-dvh overflow-hidden bg-gray-900 text-gray-400 selection:bg-gray-700 selection:text-white">
+<body>
     @* <partial name="_Nav" /> *@
    
-    <div class="h-full max-h-full">
+    <div class="h-dvh max-h-dvh bg-gray-900 text-gray-400 selection:bg-gray-700 selection:text-white overflow-hidden">
         @RenderBody()
     </div>
 
     <script src="~/lib/jquery/dist/jquery.slim.min.js"></script>
-    @* <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script> *@
 
     @RenderSection("scripts", required: false)
 </body>
