@@ -19,13 +19,13 @@
                         <input asp-for="Input.ReturnUrl" type="hidden" />
 
                         <div class="relative z-0 w-full mb-5 pt-2 group">
-                            <input asp-for="Input.Username" type="text" placeholder=" " autofocus class="block py-2 px-0 w-full text-base bg-transparent border-0 border-b-2 appearance-none text-white border-gray-600 focus:border-orange-400 focus:outline-none focus:ring-0 autofill:bg-transparent peer" />
-                            <label asp-for="Input.Username" class="peer-focus:font-medium absolute text-base text-gray-400 duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Email</label>
+                            <input asp-for="Input.Username" type="text" placeholder=" " autofocus class="block py-2 px-0 w-full text-base bg-transparent border-0 border-b-2 appearance-none text-white border-gray-600 focus:border-orange-400 focus:outline-none focus:ring-0 peer" />
+                            <label asp-for="Input.Username" class="peer-focus:font-medium absolute text-base text-gray-400 duration-300 transform -translate-y-4 peer-autofill:-translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Email</label>
                         </div>
 
                         <div class="relative z-0 w-full mb-5 pt-2 group">
                             <input asp-for="Input.Password" type="password" placeholder=" " autocomplete="off" class="block py-2 px-0 w-full text-base bg-transparent border-0 border-b-2 appearance-none text-white border-gray-600 focus:border-orange-400 focus:outline-none focus:ring-0 autofill:bg-transparent peer" />
-                            <label asp-for="Input.Password" class="peer-focus:font-medium absolute text-base text-gray-400 duration-300 transform -translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Password</label>
+                            <label asp-for="Input.Password" class="peer-focus:font-medium absolute text-base text-gray-400 duration-300 transform -translate-y-4 peer-autofill:-translate-y-4 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-orange-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Password</label>
                         </div>
 
                         @if (Model.View.AllowRememberLogin)
