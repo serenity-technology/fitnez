@@ -1,6 +1,6 @@
 ﻿namespace Fitnez;
 
-public record PersonAddress
+public record Session
 {
     public Guid Id { get; init; }
 }

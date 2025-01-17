@@ -1,6 +1,6 @@
 ﻿namespace Fitnez;
 
-public enum PersonGender
+public enum Gender
 {
     Male,
     Female
