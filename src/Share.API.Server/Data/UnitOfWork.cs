@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 
 namespace Share;
 
@@ -11,7 +12,7 @@ public class UnitOfWork : IDataSource, IDisposable
     #endregion
 
     #region Constructor    
-    public UnitOfWork(NpgsqlDataSource dataSource)
+    public UnitOfWork([FromKeyedServices("db")] NpgsqlDataSource dataSource)
     {
         _dataSource = dataSource;
 

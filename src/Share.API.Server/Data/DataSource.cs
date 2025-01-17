@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Npgsql;
 
 namespace Share;
 
@@ -9,7 +10,7 @@ public class DataSource : IDataSource
     #endregion
 
     #region Constructor
-    public DataSource(NpgsqlDataSource dataSource)
+    public DataSource([FromKeyedServices("db")] NpgsqlDataSource dataSource)
     {
         _dataSource = dataSource;
     }

@@ -2,12 +2,15 @@ using Fitnez;
 using Fitnez.Components;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
-builder.AddNpgsqlDataSource(connectionName: "postgres-db");
+builder.AddKeyedNpgsqlDataSource(name: "adm");
+builder.AddKeyedNpgsqlDataSource(name: "db");
+builder.Services.AddDataAccess();
 
 builder.Services.AddAuthentication("FitnezOidc")
         .AddOpenIdConnect("FitnezOidc", options =>
@@ -74,5 +77,9 @@ app.MapRazorComponents<App>()
     .AddAdditionalAssemblies(typeof(Fitnez.Client._Imports).Assembly);
 
 app.MapGroup("/authentication").MapLoginAndLogout();
+
+// Database
+var dataUp = app.Services.GetRequiredService<DataScriptBuilder>();
+dataUp.Execute(Assembly.GetExecutingAssembly(), "fitnez");
 
 app.Run();
