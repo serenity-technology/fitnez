@@ -1,6 +1,6 @@
 ﻿namespace Fitnez;
 
-public enum PersonAgeGroup
+public enum AgeGroup
 {
     Kid,
     Teen,

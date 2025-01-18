@@ -1,5 +1,28 @@
 ﻿namespace Share;
 
+public class Result
+{
+    #region Constructor
+    public Result()
+    { }
+
+    public Result(Error error)
+    {
+        Error = error;
+    }
+
+    public Result(string message, string context, string? contextKey = null)
+    {
+        Error = new Error { Context = context, Message = message, ContextKey = contextKey };
+    }
+    #endregion
+
+    #region Public
+    public Error? Error { get; private set; } = default!;
+    public bool Successful => Error == null;
+    #endregion
+}
+
 public class Result<TValue>
 {
     #region Constructors

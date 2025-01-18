@@ -9,7 +9,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.AddServiceDefaults();
 
 builder.AddKeyedNpgsqlDataSource(name: "adm");
-builder.AddKeyedNpgsqlDataSource(name: "db");
+builder.AddKeyedNpgsqlDataSource(name: "db", configureDataSourceBuilder: options =>
+{
+    options.MapEnum<Gender>();
+    options.MapEnum<PersonStatus>();
+});
 builder.Services.AddDataAccess();
 
 builder.Services.AddAuthentication("FitnezOidc")

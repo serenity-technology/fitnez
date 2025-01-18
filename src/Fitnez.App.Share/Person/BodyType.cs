@@ -1,7 +1,7 @@
 ﻿namespace Fitnez;
 
 // https://www.bodybuilding.com/fun/becker3.htm
-public enum PersonBodyType
+public enum BodyType
 {
     Ectomorph,
     Mesomorph,
