@@ -80,9 +80,9 @@ public class DataScriptBuilder
             var scriptNo = Convert.ToInt32(pathParts[^1]);
 
             // script name
-            var scriptName = parts[1];
+            var scriptName = parts[^1];
 
-            if (scriptNo >  lastScriptNo)
+            if (scriptNo > lastScriptNo)
             {
                 using var stream = assembly.GetManifestResourceStream(scriptFileName);
                 if (stream is not null)
@@ -95,11 +95,45 @@ public class DataScriptBuilder
             }                
         }
 
-        foreach (var script in scripts.OrderBy(o => o.No)) 
+        if (scripts.Count > 0)
         {
-        
-        }
+            // Execute scripts and update scripts table
+            const string scriptSql = @"
+                INSERT INTO public.scripts
+                    (no, name)
+                VALUES 
+                    (@No, @Name);
+            ";
+
+            var scriptCon = _dataSource.CreateConnection();
+            scriptCon.Open();
+            var scriptTrx = scriptCon.BeginTransaction();
+            try
+            {
+                foreach (var script in scripts.OrderBy(o => o.No))
+                {
+                    var ddlCmd = new NpgsqlCommand(script.Sql, scriptCon, scriptTrx);
+                    ddlCmd.ExecuteNonQuery();
+
+                    var scriptCmd = new NpgsqlCommand(scriptSql, scriptCon, scriptTrx)
+                    {
+                        Parameters =
+                        {
+                            new("No", script.No),
+                            new("Name", script.Name)
+                        }
+                    };
+                    scriptCmd.ExecuteNonQuery();
+                }
+
+                scriptTrx.Commit();
+            }
+            catch (Exception exception)
+            {
+                _logger.LogError(exception, "Scripts Transaction failed");
+                scriptTrx?.Rollback();
+            }
+        }                
     }
     #endregion
-
 }
