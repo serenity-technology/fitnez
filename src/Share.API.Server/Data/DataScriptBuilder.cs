@@ -28,9 +28,11 @@ public class DataScriptBuilder
     #endregion
 
     #region Public
-    public void Execute(Assembly assembly, string databaseName)
+    public void Execute(Assembly assembly)
     {
-        _logger.LogInformation("Preparing database {Database}", databaseName);
+        _logger.LogInformation("Data Script Builder - start");
+
+        var databaseName = DatabaseName();
 
         // Create Database if not exists
         const string dbExistsSql = @"SELECT EXISTS(SELECT 1 FROM pg_database WHERE datname = $1);";
@@ -112,6 +114,8 @@ public class DataScriptBuilder
             {
                 foreach (var script in scripts.OrderBy(o => o.No))
                 {
+                    _logger.LogInformation("Execute scripts {Name}", script.Name);
+
                     var ddlCmd = new NpgsqlCommand(script.Sql, scriptCon, scriptTrx);
                     ddlCmd.ExecuteNonQuery();
 
@@ -127,13 +131,26 @@ public class DataScriptBuilder
                 }
 
                 scriptTrx.Commit();
+                _logger.LogInformation("Data Script Builder - completed");
             }
             catch (Exception exception)
             {
-                _logger.LogError(exception, "Scripts Transaction failed");
+                _logger.LogError(exception, "Data Script Builder - Transaction failed");
                 scriptTrx?.Rollback();
             }
         }                
+    }
+    #endregion
+
+    #region Private
+    private string DatabaseName()
+    {
+        var parts = _dataSource.ConnectionString.Split(';');
+        var databasePart = parts.SingleOrDefault(w => w.Contains("Database", StringComparison.OrdinalIgnoreCase)) ?? throw new Exception("Unable to parse database name");
+        var split = databasePart.Split("=", StringSplitOptions.TrimEntries) ?? throw new Exception("Unable to parse database name");
+        var database = split[1].Trim();
+
+        return database;        
     }
     #endregion
 }

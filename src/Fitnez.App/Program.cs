@@ -80,6 +80,6 @@ app.MapGroup("/authentication").MapLoginAndLogout();
 
 // Database
 var dataUp = app.Services.GetRequiredService<DataScriptBuilder>();
-dataUp.Execute(Assembly.GetExecutingAssembly(), "fitnez");
+dataUp.Execute(Assembly.GetExecutingAssembly());
 
 app.Run();
