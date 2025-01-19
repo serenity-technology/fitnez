@@ -1,6 +1,5 @@
 ﻿namespace Fitnez;
 
-public class PersonCreateResponse
+public class PersonCreateResponse : Response
 {
-
 }

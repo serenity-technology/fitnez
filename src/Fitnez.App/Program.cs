@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.Services.AddOpenApi();
+
 builder.AddKeyedNpgsqlDataSource(name: "adm");
 builder.AddKeyedNpgsqlDataSource(name: "db", configureDataSourceBuilder: options =>
 {
@@ -50,6 +52,11 @@ builder.Services.AddRazorComponents()
     .AddInteractiveWebAssemblyComponents()
     .AddAuthenticationStateSerialization(options => options.SerializeAllClaims = true);
 
+builder.Services.AddCors();
+
+// API
+builder.Services.AddPersionEndpoints();
+
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
@@ -58,6 +65,11 @@ app.MapDefaultEndpoints();
 if (app.Environment.IsDevelopment())
 {
     app.UseWebAssemblyDebugging();
+    app.MapOpenApi();
+    app.UseSwaggerUI(options =>
+    {
+        options.SwaggerEndpoint("/openapi/v1.json", "v1");
+    });
 }
 else
 {
@@ -82,8 +94,16 @@ app.MapRazorComponents<App>()
 
 app.MapGroup("/authentication").MapLoginAndLogout();
 
+app.UseCors(x => x
+    .AllowAnyMethod()
+    .AllowAnyHeader()
+    .SetIsOriginAllowed(origin => true)
+    .AllowCredentials());
+
 // Database
 var dataUp = app.Services.GetRequiredService<DataScriptBuilder>();
 dataUp.Execute(Assembly.GetExecutingAssembly());
+
+app.MapPersonEndpoints();
 
 app.Run();

@@ -21,7 +21,7 @@ public class PersonRepository : Repository
             (
                 id,
                 name,
-                surname
+                surname,
                 gender,
                 date_of_birth,
                 id_passport,
@@ -54,7 +54,7 @@ public class PersonRepository : Repository
         catch (Exception exception)
         {
             _logger.LogError(exception, "Person Repository Create failed");
-            return new Result("Unable to create Person record.", "Person.Repository");
+            return new Result("Unable to create Person record.", "Person.Repository", person.Id.ToString());
         }        
     }
 
@@ -100,13 +100,13 @@ public class PersonRepository : Repository
             }
             else
             {
-                return new Result<PersonRead>("Person record not found.", "Person.Repository");
+                return new Result<PersonRead>("Person record not found.", "Person.Repository", id.ToString());
             }
         }
         catch (Exception exception)
         {
             _logger.LogError(exception, "Person Repository Read failed");
-            return new Result<PersonRead>("Unable to read Person record.", "Person.Repository");
+            return new Result<PersonRead>("Unable to read Person record.", "Person.Repository", id.ToString());
         }
     }
 

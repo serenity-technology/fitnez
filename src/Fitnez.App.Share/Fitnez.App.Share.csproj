@@ -7,4 +7,8 @@
 	<RootNamespace>Fitnez</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Share.API.Share\Share.API.Share.csproj" />
+  </ItemGroup>
+
 </Project>

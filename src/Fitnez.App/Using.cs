@@ -1,1 +1,5 @@
-﻿global using Share;
+﻿global using System.Security.Claims;
+
+global using Microsoft.AspNetCore.Mvc;
+
+global using Share;
